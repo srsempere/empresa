@@ -13,12 +13,22 @@
 
     $sent = $pdo->query('SELECT * FROM departamentos');
 
-    $filas = $sent->fetchAll();
-
-    print_r($filas);
-
-
-
     ?>
+
+    <div></div>
+        <table style="margin: auto" border="1">
+            <thead>
+                <th>Código</th>
+                <th>Denominación</th>
+            </thead>
+            <tbody>
+                <?php foreach ($sent as $fila): ?>
+                    <tr>
+                        <td><?= $fila['codigo'] ?></td>
+                        <td><?= $fila['denominacion'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
 </body>
 </html>
