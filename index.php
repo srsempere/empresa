@@ -11,7 +11,9 @@
 
     $pdo = new PDO('pgsql:host=localhost;dbname=empresa', 'empresa', 'empresa');
 
-    $sent = $pdo->query('SELECT * FROM departamentos');
+    $sent = $pdo->query('SELECT COUNT(*) FROM departamentos');
+    $total = $sent->fetchColumn();
+    $sent = $pdo->query('SELECT * FROM departamentos ORDER BY codigo');
 
     ?>
 
@@ -30,5 +32,7 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+
+        <p>Número total de filas:<?= $total ?> </p>
 </body>
 </html>
